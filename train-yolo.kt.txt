@@ -208,10 +208,9 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
         LOGGER.info('Using SyncBatchNorm()')
 
     # Trainloader
-    # 定义数据增强的变换操作
     transform = transforms.Compose([
-        transforms.RandomRotation(degrees=(-10, 10)),  # 随机旋转 -10 到 10 度
-        transforms.RandomResizedCrop(size=(imgsz, imgsz), scale=(0.8, 1.2))  # 随机缩放 0.8 到 1.2 倍
+        transforms.RandomRotation(degrees=(-180, 180)),
+        transforms.RandomResizedCrop(size=(imgsz, imgsz), scale=(0.8, 1.2))
     ])
     train_loader, dataset = create_dataloader(train_path, imgsz, batch_size // WORLD_SIZE, gs, single_cls,
                                               hyp=hyp, augment=True, cache=opt.cache, rect=opt.rect, rank=LOCAL_RANK,
@@ -835,10 +834,9 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
         LOGGER.info('Using SyncBatchNorm()')
 
     # Trainloader
-    # 定义数据增强的变换操作
     transform = transforms.Compose([
-        transforms.RandomRotation(degrees=(-10, 10)),  # 随机旋转 -10 到 10 度
-        transforms.RandomResizedCrop(size=(imgsz, imgsz), scale=(0.8, 1.2))  # 随机缩放 0.8 到 1.2 倍
+        transforms.RandomRotation(degrees=(-180, 180)),
+        transforms.RandomResizedCrop(size=(imgsz, imgsz), scale=(0.8, 1.2))
     ])
     train_loader, dataset = create_dataloader(train_path, imgsz, batch_size // WORLD_SIZE, gs, single_cls,
                                               hyp=hyp, augment=True, cache=opt.cache, rect=opt.rect, rank=LOCAL_RANK,
